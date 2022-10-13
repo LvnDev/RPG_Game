@@ -10,7 +10,16 @@ namespace RPG_Game
         public string Name;
         public int Health;
         public int DamageMaximum;
+
         public bool AttackBonus;
+
+        public bool Luck()
+        {
+            Random random = new Random();
+            bool Lucky = random.Next(2) == 0;
+            return Lucky;
+        }
+
 
         public int Attack()
         {
@@ -21,6 +30,6 @@ namespace RPG_Game
 
         public void Defend(int damage)
         {
-            this.Health = damage;
+            this.Health -= damage;
         }
-}   }
+  }    }

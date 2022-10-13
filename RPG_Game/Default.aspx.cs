@@ -16,15 +16,15 @@ namespace RPG_Game
             Character hero = new Character();
             hero.Name = "Hero";
             hero.DamageMaximum = 10;
-            hero.AttackBonus = true;
-            hero.Health = 500;
+            hero.AttackBonus = false;
+            hero.Health = 100;
             Character monster = new Character();
             monster.Name = "Monster";
-            monster.DamageMaximum = 15;
+            monster.DamageMaximum = 5;
             monster.AttackBonus = false;
-            monster.Health = 600;
+            monster.Health = 100;
 
-            while (hero.Health > 0 || monster.Health > 0) 
+            while (hero.Health > 0 && monster.Health > 0 ) 
             {
                 damage = hero.Attack();
                 monster.Defend(damage);
@@ -34,14 +34,24 @@ namespace RPG_Game
 
                 printStats(hero);
                 printStats(monster);
-            }
 
+             
+            }
+            if(hero.Health > 0)
+            {
+                endLabel.Text = "Monster Win";
+                
+            }
+            else if (monster.Health > 0)
+            {
+                endLabel.Text = "Hero Win";
+            }
             
 
         }
         private void printStats(Character characeter)
         {
-            Label1.Text += String.Format("<p>Name: {0} - Health: {1} - Damage Maximum: {2} - Attack Bonus: {3}",
+            Label1.Text += String.Format("<p> Name: {0} - Health: {1} - Damage Maximum: {3} - Attack Bonus: {2} ",
                 characeter.Name,
                 characeter.Health,
                 characeter.AttackBonus.ToString(),
